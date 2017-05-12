@@ -2,9 +2,12 @@ var assert = require("assert");
 
 var Hero = require("../hero.js");
 var Food = require("../food.js");
+var Quest = require("../quest.js")
 var hero1;
 var carrot
 var mushroom;
+var quest1
+var quest2
 
 beforeEach(function(){
   hero1 = new Hero({
@@ -18,6 +21,14 @@ beforeEach(function(){
   mushroom = new Food({
     name:"Mushroom",
     value: 15
+  })
+  quest1 = new Quest({
+    name:"Fight the dragon",
+    urgency: 10
+  })
+  quest2 = new Quest({
+    name:"Speak to the elves in Elwood forest",
+    urgency: 5
   })
 })
 
@@ -59,5 +70,14 @@ describe("Hero", function(){
     assert.equal(80, hero1.health)
     hero1.eat(mushroom)
     assert.equal(100, hero1.health)
+  })
+})
+
+describe("Hero", function(){
+  it("Hero should be able to sort tasks by urgency", function(){
+    hero1.addQuest(quest2);
+    hero1.addQuest(quest1);
+    hero1.sortQuestsbyUrgency();
+    assert.equal(hero1.quests[0], quest1)
   })
 })

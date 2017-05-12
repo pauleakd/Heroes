@@ -13,6 +13,9 @@ Hero.prototype = {
   talk: function(){
     console.log("I am a hero! My name is " + this.name);
   },
+  addQuest(quest){
+    this.quests.push(quest)
+  },
   eat: function(food){
     if (food.value === undefined) {return};
 
@@ -25,6 +28,11 @@ Hero.prototype = {
       else {
         this.health = 100;
       }
-    }
+    },
+  sortQuestsbyUrgency: function(){
+    this.quests.sort(function(a, b){
+      return b.urgency - a.urgency
+    })
+  }
 }
 module.exports = Hero;
