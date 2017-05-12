@@ -14,8 +14,9 @@ Hero.prototype = {
     console.log("I am a hero! My name is " + this.name);
   },
   eat: function(food){
-    var multiplier
+    if (food.value === undefined) {return};
 
+    var multiplier
     (food.name == this.favorite_food) ? multiplier = 2 : multiplier = 1
 
       if (this.health + food.value * multiplier <= 100){
