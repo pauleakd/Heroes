@@ -2,6 +2,7 @@ var Weapon = require('./weapon.js')
 
 var WeaponFactory = function(){
   var random = function(array){
+    //never returns last number, if array.length then sometimes undefined
     return array[Math.floor(Math.random()* (array.length-1))]
   }
 
