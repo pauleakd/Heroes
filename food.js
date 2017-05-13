@@ -5,15 +5,4 @@ var Food = function(params){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 module.exports = Food;

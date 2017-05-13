@@ -1,5 +1,7 @@
 var assert = require("assert");
 
+
+describe("Hero", function(){
 var Hero = require("../hero.js");
 var Food = require("../food.js");
 var Quest = require("../quest.js")
@@ -32,37 +34,28 @@ beforeEach(function(){
   })
 })
 
-describe("Hero", function(){
   it("Hero should have name, fav food and health", function(){
     assert.equal("Zardel", hero1.name)
     assert.equal("Mushroom", hero1.favorite_food)
     assert.equal(100, hero1.health)
   })
-})
 
-describe("Hero", function(){
   it("Eating food should increase health", function(){
     hero1.health = 70;
     hero1.eat(carrot)
     assert.equal(75, hero1.health)
   })
-})
 
-describe("Hero", function(){
   it("Health should not go over 100", function(){
     hero1.eat(carrot)
     assert.equal(100, hero1.health)
   })
-})
 
-describe("Hero", function(){
   it("Health should not go over 100", function(){
     hero1.eat(mushroom)
     assert.equal(100, hero1.health)
   })
-})
 
-describe("Hero", function(){
   it("Eating favorite food should double value added to health and not go over 100",
    function(){
     hero1.health = 50;
@@ -71,13 +64,12 @@ describe("Hero", function(){
     hero1.eat(mushroom)
     assert.equal(100, hero1.health)
   })
-})
 
-describe("Hero", function(){
   it("Hero should be able to sort tasks by urgency", function(){
     hero1.addQuest(quest2);
     hero1.addQuest(quest1);
     hero1.sortQuestsbyUrgency();
     assert.equal(hero1.quests[0], quest1)
   })
+
 })

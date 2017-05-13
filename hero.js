@@ -4,9 +4,12 @@ var Hero = function(params){
   this.favorite_food = params.food;
   this.quests = [];
   this.skills = {
-    magic: 0,
-    fighting: 0,
+    magic: 10,
+    melee: 10,
+    ranged_attack: 10
   }
+  this.weapons = [];
+  this.activeWeapon = null;
 }
 
 Hero.prototype = {
@@ -33,6 +36,11 @@ Hero.prototype = {
     this.quests.sort(function(a, b){
       return b.urgency - a.urgency
     })
-  }
+  },
+  addWeapon: function(item){
+    this.weapons.push(item)
+  },
+  
 }
+
 module.exports = Hero;
