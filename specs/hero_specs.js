@@ -71,5 +71,8 @@ beforeEach(function(){
     hero1.sortQuestsbyUrgency();
     assert.equal(hero1.quests[0], quest1)
   })
+  xit("hero should be able to select a weapon", function(){
+    hero1.setActiveWeapon()
+  })
 
 })

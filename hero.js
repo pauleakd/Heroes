@@ -39,8 +39,7 @@ Hero.prototype = {
   },
   addWeapon: function(item){
     this.weapons.push(item)
-  },
-  
+  }
 }
 
 module.exports = Hero;
