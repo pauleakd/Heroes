@@ -38,11 +38,18 @@ beforeEach(function(){
   })
   quest1 = new Quest({
     name:"Fight the dragon",
-    urgency: 10
+    urgency: 10,
+    beast: dragon
   })
   quest2 = new Quest({
     name:"Speak to the elves in Elwood forest",
     urgency: 5
+  })
+  quest3 = new Quest({
+    name:"Fight the rat",
+    urgency: 20,
+    beast: rat
+
   })
   weapon1 = new Weapon({
     name: "Ice Rod",
@@ -141,6 +148,22 @@ beforeEach(function(){
     console.log("this is the hero's health" + hero1.health)
     assert.equal(true, hero1.health <= 0)
     assert.equal(true, dragon.health > 0)
+  })
+  it("hero should be able to complete quest", function(){
+    hero1.addWeapon(weapon3)
+    hero1.setActiveWeapon(0)
+    hero1.addQuest(quest3)
+    hero1.completeQuest(hero1.quests[0])
+    assert.equal(true, hero1.quests[0].completed)
+    assert.equal(2, hero1.weapons.length)
+  })
+  it("hero should be able to fail quest", function(){
+    hero1.addWeapon(weapon3)
+    hero1.setActiveWeapon(0)
+    hero1.addQuest(quest1)
+    hero1.completeQuest(hero1.quests[0])
+    assert.equal(false, hero1.quests[0].completed)
+    assert.equal(1, hero1.weapons.length)
   })
 
 })

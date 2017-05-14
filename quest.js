@@ -6,6 +6,7 @@ var Quest = function(params) {
   this.urgency = params.urgency
   this.completed = false
   this.reward = WeaponFactory();
+  this.beast = params.beast
 }
 
 module.exports = Quest

@@ -67,7 +67,13 @@ Hero.prototype = {
     while (this.health > 0 && beast.health > 0){
       this.health -= beast.beAttacked(this.attack())
     }
-
+  },
+  completeQuest: function(quest){
+    this.fightBeast(quest.beast)
+    if (this.health > 0){
+      this.addWeapon(quest.reward)
+      quest.completed = true;
+    }
   }
 
 }
