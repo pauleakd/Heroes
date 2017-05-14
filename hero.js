@@ -61,6 +61,12 @@ Hero.prototype = {
 
     var attackPoints = this.activeWeapon.attack
     return skillPoints + attackPoints;
+  },
+
+  fightBeast: function(beast){
+    while (this.health > 0 && beast.health > 0){
+      this.health -= beast.beAttacked(this.attack())
+    }
 
   }
 

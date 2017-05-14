@@ -7,6 +7,9 @@ var Food = require("../food.js");
 var Quest = require("../quest.js")
 var WeaponFactory = require("../weapon_factory")
 var Weapon = require("../weapon.js")
+var Beast = require("../beast.js")
+
+
 var hero1;
 var carrot
 var mushroom;
@@ -17,6 +20,8 @@ var weapon2
 var weapon3
 var weapon4
 var weapon5
+var rat
+var dragon
 
 beforeEach(function(){
   hero1 = new Hero({
@@ -48,6 +53,16 @@ beforeEach(function(){
   weapon3 = new WeaponFactory()
   weapon4 = new WeaponFactory()
   weapon5 = new WeaponFactory()
+  rat = new Beast({
+    name: "Rat",
+    attack: 1,
+    health: 30
+  })
+  dragon = new Beast({
+    name: "Dragon",
+    attack: 40,
+    health: 200
+  })
 })
 
   it("Hero should have name, fav food and health", function(){
@@ -109,6 +124,23 @@ beforeEach(function(){
     hero1.addWeapon(weapon1)
     hero1.setActiveWeapon(0)
     assert.equal(15, hero1.attack())
+  })
+  it("hero should be able to defeat rat", function(){
+    hero1.addWeapon(weapon3)
+    hero1.setActiveWeapon(0)
+    hero1.fightBeast(rat)
+    console.log("this is the hero's health" + hero1.health)
+    assert.equal(true, hero1.health > 0)
+    assert.equal(true, rat.health <= 0)
+  })
+
+  it("hero should lose against dragon", function(){
+    hero1.addWeapon(weapon3)
+    hero1.setActiveWeapon(0)
+    hero1.fightBeast(dragon)
+    console.log("this is the hero's health" + hero1.health)
+    assert.equal(true, hero1.health <= 0)
+    assert.equal(true, dragon.health > 0)
   })
 
 })
