@@ -6,6 +6,7 @@ var Hero = require("../hero.js");
 var Food = require("../food.js");
 var Quest = require("../quest.js")
 var WeaponFactory = require("../weapon_factory")
+var Weapon = require("../weapon.js")
 var hero1;
 var carrot
 var mushroom;
@@ -13,6 +14,9 @@ var quest1
 var quest2
 var weapon1
 var weapon2
+var weapon3
+var weapon4
+var weapon5
 
 beforeEach(function(){
   hero1 = new Hero({
@@ -35,8 +39,15 @@ beforeEach(function(){
     name:"Speak to the elves in Elwood forest",
     urgency: 5
   })
-  weapon1 = new WeaponFactory();
+  weapon1 = new Weapon({
+    name: "Ice Rod",
+    type:"Magic",
+    attack: 5
+  });
   weapon2 = new WeaponFactory()
+  weapon3 = new WeaponFactory()
+  weapon4 = new WeaponFactory()
+  weapon5 = new WeaponFactory()
 })
 
   it("Hero should have name, fav food and health", function(){
@@ -81,6 +92,23 @@ beforeEach(function(){
     hero1.addWeapon(weapon2)
     hero1.setActiveWeapon(0)
     assert.deepEqual(weapon1, hero1.activeWeapon)
+  })
+
+  it("hero should be able to sort weapons by attack", function(){
+    hero1.addWeapon(weapon1)
+    hero1.addWeapon(weapon2)
+    hero1.addWeapon(weapon3)
+    hero1.addWeapon(weapon4)
+    hero1.addWeapon(weapon5)
+    console.log(hero1.weapons)
+    hero1.sortWeaponsByAttack()
+    console.log(hero1.weapons)
+    assert.deepEqual(weapon1, hero1.weapons[4])
+  })
+  it("hero should be able to attack", function(){
+    hero1.addWeapon(weapon1)
+    hero1.setActiveWeapon(0)
+    // assertEquals()
   })
 
 })

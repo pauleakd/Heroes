@@ -21,6 +21,6 @@ describe("Weapon", function(){
 
   it("Test weapon factory", function(){
     var weapon2 = WeaponFactory();
-    console.log(weapon2)
+    // console.log(weapon2)
   })
 })

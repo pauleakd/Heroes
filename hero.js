@@ -43,6 +43,12 @@ Hero.prototype = {
 
   setActiveWeapon: function(index){
     this.activeWeapon = this.weapons[index]
+  },
+
+  sortWeaponsByAttack: function(){
+    this.weapons = this.weapons.sort(function(a, b){
+      return b.attack - a.attack
+    })
   }
 
 }
