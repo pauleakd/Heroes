@@ -5,11 +5,14 @@ describe("Hero", function(){
 var Hero = require("../hero.js");
 var Food = require("../food.js");
 var Quest = require("../quest.js")
+var WeaponFactory = require("../weapon_factory")
 var hero1;
 var carrot
 var mushroom;
 var quest1
 var quest2
+var weapon1
+var weapon2
 
 beforeEach(function(){
   hero1 = new Hero({
@@ -32,6 +35,8 @@ beforeEach(function(){
     name:"Speak to the elves in Elwood forest",
     urgency: 5
   })
+  weapon1 = new WeaponFactory();
+  weapon2 = new WeaponFactory()
 })
 
   it("Hero should have name, fav food and health", function(){
@@ -71,8 +76,11 @@ beforeEach(function(){
     hero1.sortQuestsbyUrgency();
     assert.equal(hero1.quests[0], quest1)
   })
-  xit("hero should be able to select a weapon", function(){
-    hero1.setActiveWeapon()
+  it("hero should be able to select a weapon", function(){
+    hero1.addWeapon(weapon1)
+    hero1.addWeapon(weapon2)
+    hero1.setActiveWeapon(0)
+    assert.deepEqual(weapon1, hero1.activeWeapon)
   })
 
 })

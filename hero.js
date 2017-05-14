@@ -39,7 +39,12 @@ Hero.prototype = {
   },
   addWeapon: function(item){
     this.weapons.push(item)
+  },
+
+  setActiveWeapon: function(index){
+    this.activeWeapon = this.weapons[index]
   }
+
 }
 
 module.exports = Hero;
