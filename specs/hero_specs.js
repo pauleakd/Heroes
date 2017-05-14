@@ -108,7 +108,7 @@ beforeEach(function(){
   it("hero should be able to attack", function(){
     hero1.addWeapon(weapon1)
     hero1.setActiveWeapon(0)
-    // assertEquals()
+    assert.equal(15, hero1.attack())
   })
 
 })

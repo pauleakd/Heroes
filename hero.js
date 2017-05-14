@@ -5,8 +5,7 @@ var Hero = function(params){
   this.quests = [];
   this.skills = {
     magic: 10,
-    melee: 10,
-    ranged_attack: 10
+    melee: 10
   }
   this.weapons = [];
   this.activeWeapon = null;
@@ -49,6 +48,20 @@ Hero.prototype = {
     this.weapons = this.weapons.sort(function(a, b){
       return b.attack - a.attack
     })
+  },
+  attack: function(){
+    var skillPoints
+    if (this.activeWeapon.type == "Melee") {
+      skillPoints = this.skills.melee
+    }
+    else if(this.activeWeapon.type == "Magic"){
+      skillPoints = this.skills.magic
+    }
+    else skillPoints = 0;
+
+    var attackPoints = this.activeWeapon.attack
+    return skillPoints + attackPoints;
+
   }
 
 }
